@@ -25,7 +25,7 @@ const CONFIG = {
   eventTitle: 'Bar Mitsvah de Zohar Itshak',
   eventDescription: 'Bar Mitsvah de Zohar Itshak - Mise des téfilines et réception',
   eventLocation: 'Salle XXXX, [adresse à compléter]',
-  eventDurationHours: 5,
+  eventDurationHours: 7,
 
   // ========== PHOTO HÉRO (Polaroïd) ==========
   heroPhoto: 'assets/images/zohar.jpeg', // 738x1600

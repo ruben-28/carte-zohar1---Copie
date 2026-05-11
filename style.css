@@ -730,10 +730,9 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
 }
 .arc-text-content {
   font-family: var(--font-hebrew);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 500;
   fill: var(--color-gold);
-  letter-spacing: 0.04em;
 }
 .tefiline-deco {
   color: var(--color-sea-deep);
@@ -1003,7 +1002,7 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
   .countdown-value { font-size: 2.8rem; }
   .countdown { gap: 1rem; }
   .countdown-item { padding: 1.4rem 0.6rem; }
-  .arc-text-content { font-size: 28px; }
+  .arc-text-content { font-size: 30px; }
   .section-thumb { width: 64px; height: 64px; }
 }
 

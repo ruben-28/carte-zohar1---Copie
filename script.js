@@ -55,9 +55,59 @@ const CONFIG = {
   loaderMinDuration: 1400
 };
 
+
+
+/* ============================================================
+   ARC DE TEXTE HÉBREU - Positionnement manuel pour compatibilité Safari
+   ============================================================ */
+function initArcText() {
+  const svg = document.getElementById('arcSvg');
+  if (!svg) return;
+
+  const text = 'וקשרתם לאות על ידך והיו לטטפות בין עיניך';
+
+  // Paramètres de l'arc
+  const cx = 250;       // centre X
+  const cy = 220;       // centre Y (bas du SVG)
+  const radius = 170;   // rayon de l'arc
+  const arcSpan = 140;  // angle total couvert par le texte (en degrés)
+
+  // Inverser l'ordre des caractères pour qu'ils s'affichent de droite à gauche
+  const chars = Array.from(text).reverse();
+  const totalChars = chars.length;
+
+  // Angle de départ (à gauche de l'arc) et incrément
+  const startAngle = -90 - arcSpan / 2;  // commence à gauche
+  const angleStep = arcSpan / (totalChars - 1);
+
+  chars.forEach((char, i) => {
+    const angle = startAngle + i * angleStep;
+    const rad = (angle * Math.PI) / 180;
+
+    // Position de la lettre sur le cercle
+    const x = cx + radius * Math.cos(rad);
+    const y = cy + radius * Math.sin(rad);
+
+    // Rotation de la lettre pour qu'elle suive la courbe
+    const rotation = angle + 90;
+
+    const textEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    textEl.setAttribute('x', x);
+    textEl.setAttribute('y', y);
+    textEl.setAttribute('text-anchor', 'middle');
+    textEl.setAttribute('dominant-baseline', 'middle');
+    textEl.setAttribute('transform', `rotate(${rotation}, ${x}, ${y})`);
+    textEl.setAttribute('class', 'arc-text-content');
+    textEl.textContent = char;
+
+    svg.appendChild(textEl);
+  });
+}
+
 /* ============================================================
    TEXTES MODIFIABLES
    ============================================================ */
+
 function initEditableTexts() {
   const updates = {
     tefilinesTime: CONFIG.tefilinesTime,
@@ -674,4 +724,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
   initRSVP();
   initParallax();
+  initArcText();   // ← ajouter cette ligne
 });

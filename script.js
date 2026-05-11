@@ -12,7 +12,7 @@ const CONFIG = {
 
   // ========== LIEUX ==========
   tefilinesPlace: 'dans la salle MAKOM BAYAM',
-  tefilinesAddress: 'Yekuti\'el Adam St 7", Ashkelon',
+  tefilinesAddress: 'Yekuti\'el Adam St 7, Ashkelon',
   receptionPlace: 'dans la salle MAKOM BAYAM',
   receptionAddressEn: 'Yekuti\'el Adam St 7, Ashkelon',
   receptionAddressHe: 'רח\' יקוטיאל אדם 7, אשקלון',

@@ -4,7 +4,7 @@
 
 const CONFIG = {
   // ========== DATE PRINCIPALE ==========
-  eventDate: new Date(2026, 7, 17, 18, 0, 0),
+  eventDate: new Date(2026, 7, 17, 9, 0, 0),
 
   // ========== HORAIRES ==========
   tefilinesTime: 'à 09H00',

@@ -734,6 +734,8 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
   font-weight: 500;
   fill: var(--color-gold);
   letter-spacing: 0.04em;
+  direction: rtl;
+  unicode-bidi: bidi-override;
 }
 .tefiline-deco {
   color: var(--color-sea-deep);

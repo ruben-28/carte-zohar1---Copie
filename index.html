@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#2C5F7C" />
+  <meta name="description" content="Invitation à la Bar Mitsvah de Zohar Itshak - 17 Août 2026" />
+  <title>Bar Mitsvah de Zohar Itshak</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <svg class="loader-circle" viewBox="0 0 100 100" width="80" height="80">
+      <circle cx="50" cy="50" r="45" class="loader-track" />
+      <circle cx="50" cy="50" r="45" class="loader-progress" />
+    </svg>
+  </div>
+
+  <!-- OVERLAY D'ACCUEIL -->
+  <div class="overlay" id="overlay">
+    <div class="overlay-content">
+      <div class="overlay-ornament">
+        <svg viewBox="0 0 200 30" width="180" height="25" aria-hidden="true">
+          <line x1="10" y1="15" x2="80" y2="15" stroke="currentColor" stroke-width="0.5" />
+          <circle cx="100" cy="15" r="4" fill="none" stroke="currentColor" stroke-width="0.8" />
+          <circle cx="100" cy="15" r="1.5" fill="currentColor" />
+          <line x1="120" y1="15" x2="190" y2="15" stroke="currentColor" stroke-width="0.5" />
+        </svg>
+      </div>
+      <p class="overlay-subtitle">Bar Mitsvah</p>
+
+      <!-- Photo hero - va se transformer en polaroïd lors du morphing -->
+      <div class="hero-photo" id="heroPhoto">
+        <div class="hero-photo-inner">
+          <img id="heroPhotoImg" alt="Zohar Itshak" />
+          <div class="hero-photo-placeholder" id="heroPhotoPlaceholder">
+            <svg viewBox="0 0 100 120" width="80" height="100" aria-hidden="true">
+              <circle cx="50" cy="42" r="18" fill="currentColor" opacity="0.4"/>
+              <path d="M20,110 C20,80 35,68 50,68 C65,68 80,80 80,110 Z" fill="currentColor" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="hero-photo-caption">Zohar · Été 2026</div>
+        </div>
+      </div>
+
+      <h1 class="overlay-title">Zohar Itshak</h1>
+      <p class="overlay-hebrew">זוהר יצחק</p>
+      <p class="overlay-date">17 Août 2026</p>
+
+      <button class="btn btn-primary overlay-btn" id="openInvitationBtn">
+        <span>Voir l'invitation</span>
+      </button>
+    </div>
+
+    <div class="overlay-waves" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path class="wave-back" d="M0,80 C180,100 360,60 540,80 C720,100 900,120 1080,90 C1260,60 1380,80 1440,90 L1440,200 L0,200 Z"/>
+        <path class="wave-mid" d="M0,110 C120,90 240,130 360,115 C480,100 600,80 720,100 C840,120 960,140 1080,120 C1200,100 1320,110 1440,105 L1440,200 L0,200 Z"/>
+        <path class="wave-front" d="M0,140 C80,125 160,155 240,145 C320,135 400,115 480,130 C560,145 640,165 720,155 C800,145 880,125 960,135 C1040,145 1120,165 1200,155 C1280,145 1360,130 1440,140 L1440,200 L0,200 Z"/>
+        <path class="wave-foam" d="M0,140 C80,125 160,155 240,145 C320,135 400,115 480,130 C560,145 640,165 720,155 C800,145 880,125 960,135 C1040,145 1120,165 1200,155 C1280,145 1360,130 1440,140"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- BOUTONS FLOTTANTS -->
+  <button class="floating-btn music-btn" id="musicToggleBtn" aria-label="Activer/désactiver la musique" hidden>
+    <svg class="icon-music" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6" cy="18" r="3" fill="currentColor" />
+      <circle cx="18" cy="16" r="3" fill="currentColor" />
+    </svg>
+    <svg class="icon-music-muted" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6" cy="18" r="3" fill="currentColor" />
+      <circle cx="18" cy="16" r="3" fill="currentColor" />
+      <line x1="3" y1="3" x2="22" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </svg>
+  </button>
+
+  <button class="floating-btn menu-btn" id="menuToggleBtn" aria-label="Menu de navigation" hidden>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+
+  <!-- MENU DE NAVIGATION -->
+  <nav class="nav-menu" id="navMenu" aria-hidden="true">
+    <button class="nav-close" id="navCloseBtn" aria-label="Fermer le menu">×</button>
+    <ul class="nav-list">
+      <li><a href="#section-intro" class="nav-link">Annonce</a></li>
+      <li><a href="#section-countdown" class="nav-link">Save the Date</a></li>
+      <li><a href="#section-tefilines" class="nav-link">Téfilines</a></li>
+      <li><a href="#section-reception" class="nav-link">Réception</a></li>
+      <li><a href="#section-photos" class="nav-link">Galerie</a></li>
+      <li><a href="#section-rsvp" class="nav-link">RSVP</a></li>
+    </ul>
+    <div class="nav-ornament">
+      <svg viewBox="0 0 100 20" width="100" height="20" aria-hidden="true">
+        <line x1="10" y1="10" x2="40" y2="10" stroke="currentColor" stroke-width="0.5" />
+        <circle cx="50" cy="10" r="2" fill="currentColor" />
+        <line x1="60" y1="10" x2="90" y2="10" stroke="currentColor" stroke-width="0.5" />
+      </svg>
+    </div>
+  </nav>
+
+  <!-- ARRIÈRE-PLAN PARALLAX -->
+  <div class="parallax-bg" id="parallaxBg" aria-hidden="true">
+    <div class="parallax-layer parallax-sky"></div>
+    <div class="parallax-layer parallax-sun"></div>
+    <div class="parallax-layer parallax-waves">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path class="bg-wave-back" d="M0,180 C120,200 240,160 360,170 C480,180 600,210 720,200 C840,190 960,160 1080,170 C1200,180 1320,200 1440,190 L1440,320 L0,320 Z"/>
+        <path class="bg-wave-mid" d="M0,220 C90,200 180,240 270,230 C360,220 450,180 540,200 C630,220 720,250 810,235 C900,220 990,190 1080,210 C1170,230 1260,250 1350,230 C1395,220 1420,225 1440,220 L1440,320 L0,320 Z"/>
+        <path class="bg-wave-front" d="M0,260 C60,245 120,275 180,265 C240,255 300,235 360,250 C420,265 480,285 540,275 C600,265 660,245 720,255 C780,265 840,285 900,275 C960,265 1020,245 1080,255 C1140,265 1200,285 1260,275 C1320,265 1380,250 1440,260 L1440,320 L0,320 Z"/>
+        <path class="bg-wave-foam" d="M0,260 C60,245 120,275 180,265 C240,255 300,235 360,250 C420,265 480,285 540,275 C600,265 660,245 720,255 C780,265 840,285 900,275 C960,265 1020,245 1080,255 C1140,265 1200,285 1260,275 C1320,265 1380,250 1440,260"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Palmes décoratives en SVG (réutilisables) -->
+  <svg style="display:none" aria-hidden="true">
+    <defs>
+      <g id="palmLeaf">
+        <path d="M50,2 C45,15 30,25 15,35 C25,32 35,30 42,32 C30,42 22,55 18,72 C28,60 38,52 45,52 C38,68 35,82 38,98 C44,82 50,72 55,68 C52,82 52,95 58,108 C58,90 62,75 68,65 C65,82 68,92 76,100 C72,85 75,70 80,58 C78,72 84,82 92,88 C82,76 82,62 85,48 C90,58 98,62 105,62 C92,55 85,42 82,30 C92,32 100,30 108,25 C95,22 82,12 75,2 C70,8 60,8 50,2 Z" fill="currentColor"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="invitation" id="invitation" hidden>
+
+    <!-- SECTION 1 : INTRODUCTION -->
+    <section class="section section-intro" id="section-intro">
+
+      <!-- Palmes décoratives -->
+      <svg class="palm-deco palm-top-left" viewBox="0 0 120 120" aria-hidden="true">
+        <use href="#palmLeaf" transform="rotate(-30 60 60)"/>
+      </svg>
+      <svg class="palm-deco palm-top-right" viewBox="0 0 120 120" aria-hidden="true">
+        <use href="#palmLeaf" transform="rotate(220 60 60)"/>
+      </svg>
+
+      <div class="section-inner">
+
+        <!-- POLAROÏD - emplacement final de la photo après morphing -->
+        <div class="polaroid-wrapper" id="polaroidWrapper">
+          <!-- Le polaroïd réel sera injecté/déplacé ici par JS -->
+        </div>
+
+        <!-- Tampon doré -->
+        <div class="stamp reveal" data-delay="1200">
+          <svg viewBox="0 0 100 100" width="80" height="80" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1"/>
+            <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="0.5"/>
+            <path id="stampCircle" d="M 50,50 m -34,0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0" fill="transparent"/>
+            <text class="stamp-text"><textPath href="#stampCircle" startOffset="0">BAR MITSVAH · ZOHAR · AOÛT 2026 · </textPath></text>
+            <circle cx="50" cy="50" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <div class="ornament-top reveal" data-delay="1400">
+          <svg viewBox="0 0 200 40" width="200" height="40" aria-hidden="true">
+            <line x1="20" y1="20" x2="80" y2="20" stroke="currentColor" stroke-width="0.5" />
+            <path d="M90,20 Q100,10 110,20 Q100,30 90,20 Z" fill="none" stroke="currentColor" stroke-width="0.8" />
+            <circle cx="100" cy="20" r="1.5" fill="currentColor" />
+            <line x1="120" y1="20" x2="180" y2="20" stroke="currentColor" stroke-width="0.5" />
+          </svg>
+        </div>
+
+        <p class="parents-names reveal" data-delay="1600">
+          <span>Jessica</span><span class="separator">,</span> <span>David</span>
+        </p>
+        <p class="siblings-names reveal" data-delay="1800">
+          <span>Dvir</span> <span>et</span> <span>Adiel</span>
+        </p>
+
+        <p class="announce reveal" data-delay="2000">
+          ont la joie de vous faire part de la Bar Mitsvah de leur fils et frère
+        </p>
+
+        <h2 class="hero-name reveal" data-delay="2200">Zohar Itshak</h2>
+        <p class="hero-name-hebrew reveal" data-delay="2400">זוהר יצחק</p>
+
+        <p class="will-be reveal" data-delay="2600">qui aura lieu le</p>
+        <p class="hero-date reveal" data-delay="2800">17 Août 2026</p>
+
+        <div class="ornament-bottom reveal" data-delay="3000">
+          <svg viewBox="0 0 200 40" width="200" height="40" aria-hidden="true">
+            <line x1="20" y1="20" x2="80" y2="20" stroke="currentColor" stroke-width="0.5" />
+            <path d="M90,20 Q100,10 110,20 Q100,30 90,20 Z" fill="none" stroke="currentColor" stroke-width="0.8" />
+            <circle cx="100" cy="20" r="1.5" fill="currentColor" />
+            <line x1="120" y1="20" x2="180" y2="20" stroke="currentColor" stroke-width="0.5" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 : SAVE THE DATE -->
+    <section class="section section-countdown" id="section-countdown">
+      <div class="section-inner">
+        <p class="section-pretitle reveal">Réservez la date</p>
+        <h2 class="section-title reveal">Save the Date</h2>
+
+        <div class="countdown reveal" data-delay="200">
+          <div class="countdown-item">
+            <div class="countdown-value" id="cdDays">--</div>
+            <div class="countdown-label">Jours</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cdHours">--</div>
+            <div class="countdown-label">Heures</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cdMinutes">--</div>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cdSeconds">--</div>
+            <div class="countdown-label">Secondes</div>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary btn-calendar reveal" data-delay="400" id="addToCalendarBtn">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.6"/>
+            <line x1="8" y1="3" x2="8" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="16" y1="3" x2="16" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span>Ajouter au calendrier</span>
+        </button>
+
+        <div class="calendar-menu" id="calendarMenu" aria-hidden="true">
+          <button class="calendar-option" data-cal="google">Google Calendar</button>
+          <button class="calendar-option" data-cal="apple">Apple / iCal (.ics)</button>
+          <button class="calendar-option" data-cal="outlook">Outlook</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 : MISE DES TÉFILINES -->
+    <section class="section section-tefilines" id="section-tefilines">
+      <div class="section-inner">
+
+        <div class="arc-text reveal" aria-label="וקשרתם לאות על ידך והיו לטטפות בין עיניך">
+          <svg viewBox="0 0 500 220" width="100%" height="220" aria-hidden="true">
+            <defs>
+              <path id="arcPath" d="M 30,200 A 220,180 0 0 1 470,200" fill="transparent" />
+             </defs>
+            <text class="arc-text-content" text-anchor="middle">
+              <textPath href="#arcPath" startOffset="50%">וקשרתם לאות על ידך והיו לטטפות בין עיניך</textPath>
+            </text>
+          </svg>
+        </div>
+
+        <p class="section-pretitle reveal" data-delay="200">Cérémonie</p>
+        <h2 class="section-title reveal" data-delay="300">Mise des Téfilines</h2>
+
+        <div class="info-block reveal" data-delay="400">
+          <p class="info-line">La mise des téfilines aura lieu בע"ה le</p>
+          <p class="info-highlight">Lundi 17 Août 2026</p>
+          <p class="info-time" id="tefilinesTime">à XXHXX</p>
+          <p class="info-place" id="tefilinesPlace">dans la salle XXXX</p>
+          <p class="info-address" id="tefilinesAddress">XXXX St 35, XXXX, XXX</p>
+          <p class="info-note">L'office sera suivi de la réception.</p>
+        </div>
+
+        <a href="#" class="btn btn-primary btn-waze reveal" data-delay="600" id="wazeTefilinesBtn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path d="M12 2C7.58 2 4 5.58 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.42-3.58-8-8-8z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="10" r="2.5" fill="currentColor"/>
+          </svg>
+          <span>Voir l'itinéraire sur Waze</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 4 : RÉCEPTION -->
+    <section class="section section-reception" id="section-reception">
+      
+      <div class="section-inner">
+        <p class="section-pretitle reveal">Célébration</p>
+        <h2 class="section-title reveal">La Réception</h2>
+
+  <div class="reception-block reveal" data-delay="200">
+          <div class="grandparents">
+            <p class="reception-line grandparent-left">M. &amp; Mme Arzoin Albert</p>
+            <p class="reception-line grandparent-right">Mme Belhassen Mazal</p>
+          </div>
+          <p class="reception-line reception-parents">Jessica et David</p>  
+
+          <p class="reception-text">seraient heureux de vous convier<br/>à la fête donnée en l'honneur de</p>
+
+          <h3 class="reception-name">Zohar Itshak</h3>
+
+          <p class="reception-text">le Lundi 17 Août 2026</p>
+          <p class="reception-text" id="receptionTime">à partir de XXHXX</p>
+          <p class="reception-text" id="receptionPlace">dans la salle XXXX</p>
+
+          <div class="reception-addresses">
+            <p class="reception-address-en" id="receptionAddressEn">[adresse en anglais à compléter]</p>
+            <p class="reception-address-he" id="receptionAddressHe" dir="rtl">[adresse en hébreu à compléter]</p>
+          </div>
+
+          <div class="reception-tribute">
+            <svg viewBox="0 0 100 20" width="100" height="20" aria-hidden="true">
+              <line x1="10" y1="10" x2="40" y2="10" stroke="currentColor" stroke-width="0.5"/>
+              <circle cx="50" cy="10" r="2" fill="currentColor"/>
+              <line x1="60" y1="10" x2="90" y2="10" stroke="currentColor" stroke-width="0.5"/>
+            </svg>
+            <p class="tribute-text">En ce jour de joie, une pensée toute particulière pour toi, Pépé Jojo.</p>
+          </div>
+        </div>
+
+        <a href="#" class="btn btn-primary btn-waze reveal" data-delay="400" id="wazeReceptionBtn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path d="M12 2C7.58 2 4 5.58 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.42-3.58-8-8-8z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="10" r="2.5" fill="currentColor"/>
+          </svg>
+          <span>Voir l'itinéraire sur Waze</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 5 : CAROUSEL DE PHOTOS -->
+    <section class="section section-photos" id="section-photos">
+      <div class="section-inner">
+        <p class="section-pretitle reveal">Souvenirs</p>
+        <h2 class="section-title reveal">Galerie</h2>
+
+        <div class="carousel reveal" data-delay="200" id="carousel">
+          <div class="carousel-track" id="carouselTrack"></div>
+
+          <button class="carousel-arrow carousel-prev" id="carouselPrev" aria-label="Photo précédente">
+            <svg viewBox="0 0 24 24" width="20" height="20"><polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="carousel-arrow carousel-next" id="carouselNext" aria-label="Photo suivante">
+            <svg viewBox="0 0 24 24" width="20" height="20"><polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 : RSVP -->
+    <section class="section section-rsvp" id="section-rsvp">
+      <div class="section-inner">
+        <p class="section-pretitle reveal">Confirmez votre présence</p>
+        <h2 class="section-title reveal">RSVP</h2>
+
+        <form class="rsvp-form reveal" data-delay="200" id="rsvpForm" novalidate>
+
+          <div class="form-group">
+            <label for="fullName">Nom complet</label>
+            <input type="text" id="fullName" name="fullName" required autocomplete="name" />
+            <span class="form-error" data-error-for="fullName"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="guestCount">Nombre de personnes</label>
+            <input type="number" id="guestCount" name="guestCount" min="1" max="20" required inputmode="numeric" />
+            <span class="form-error" data-error-for="guestCount"></span>
+          </div>
+
+          <div class="form-group">
+            <span class="form-label">Présence à la mise des téfilines</span>
+            <div class="form-toggle">
+              <input type="radio" id="tefYes" name="tefilines" value="oui" />
+              <label for="tefYes">Oui</label>
+              <input type="radio" id="tefNo" name="tefilines" value="non" />
+              <label for="tefNo">Non</label>
+            </div>
+            <span class="form-error" data-error-for="tefilines"></span>
+          </div>
+
+          <div class="form-group">
+            <span class="form-label">Présence à la réception</span>
+            <div class="form-toggle">
+              <input type="radio" id="recYes" name="reception" value="oui" />
+              <label for="recYes">Oui</label>
+              <input type="radio" id="recNo" name="reception" value="non" />
+              <label for="recNo">Non</label>
+            </div>
+            <span class="form-error" data-error-for="reception"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message (optionnel)</label>
+            <textarea id="message" name="message" rows="3" maxlength="300" placeholder="Mazal Tovvvv !!!!"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit">
+            <span>Confirmer</span>
+          </button>
+
+          <div class="form-feedback" id="formFeedback" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <audio id="bgAudio" loop preload="none">
+    <source src="assets/audio/background.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

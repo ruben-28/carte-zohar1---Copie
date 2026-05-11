@@ -69,8 +69,8 @@ function initArcText() {
   // Paramètres de l'arc
   const cx = 250;       // centre X
   const cy = 220;       // centre Y (bas du SVG)
-  const radius = 170;   // rayon de l'arc
-  const arcSpan = 140;  // angle total couvert par le texte (en degrés)
+  const radius = 190;   // rayon de l'arc
+  const arcSpan = 160;  // angle total couvert par le texte (en degrés)
 
   // Inverser l'ordre des caractères pour qu'ils s'affichent de droite à gauche
   const chars = Array.from(text).reverse();

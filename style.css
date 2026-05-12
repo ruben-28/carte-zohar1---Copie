@@ -599,21 +599,72 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
 }
 
 .section-tefilines { background: linear-gradient(180deg, rgba(244, 232, 208, 0.5) 0%, rgba(255, 255, 255, 0.6) 100%); }
-.section-reception { 
-  background-image: 
+.section-reception {
+  position: relative;
+  overflow: hidden;
+
+  background:
     linear-gradient(
       180deg,
       rgba(244, 232, 208, 0.6) 0%,
       rgba(255, 255, 255, 0.85) 12%,
-      rgba(255, 255, 255, 0.65) 50%,
+      rgba(255, 255, 255, 0.75) 50%,
       rgba(255, 255, 255, 0.85) 88%,
       rgba(244, 232, 208, 0.6) 100%
-    ),
-    url(assets/images/shadow_palm_tree.jpg);
+    );
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.section-reception::after {
+  content: "";
+  position: absolute;
+
+  right: -170px;
+  bottom: 30%;
+
+  width: 780px;
+  height: 1260px;
+
+  background-image: url("assets/images/palm_tree_shadow.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+
+  transform-origin: bottom center;
+  animation: palmWind 4s ease-in-out infinite;
+}
+.section-reception > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes palmWind {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+
+  25% {
+    transform: rotate(1.5deg) translateX(-3px);
+  }
+
+  50% {
+    transform: rotate(0deg) translateX(0);
+  }
+
+  75% {
+    transform: rotate(-1.5deg) translateX(3px);
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
 }
 .section-photos { background: linear-gradient(180deg, rgba(127, 179, 184, 0.15) 0%, rgba(255, 255, 255, 0.5) 100%); }
 .section-rsvp { background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(244, 232, 208, 0.6) 100%); }

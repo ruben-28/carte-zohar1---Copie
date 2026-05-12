@@ -605,7 +605,7 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
       180deg,
       rgba(244, 232, 208, 0.6) 0%,
       rgba(255, 255, 255, 0.85) 12%,
-      rgba(255, 255, 255, 0.75) 50%,
+      rgba(255, 255, 255, 0.65) 50%,
       rgba(255, 255, 255, 0.85) 88%,
       rgba(244, 232, 208, 0.6) 100%
     ),
@@ -883,10 +883,10 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
 .reception-block::before { margin-bottom: 1.8rem; }
 .reception-block::after { margin-top: 1.8rem; }
 
-.reception-line { font-family: var(--font-serif); font-size: 1.2rem; color: var(--color-sea-deep); font-weight: 500; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+.reception-line { font-family: var(--font-serif); font-size: 1.2rem; color: var(--color-sea-deep); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
 .reception-spacer { height: 0.8rem; }
-.reception-text { font-family: var(--font-sans); font-weight: 300; font-size: 0.95rem; color: var(--color-text); margin: 1rem 0 0.4rem; line-height: 1.7; }
-.reception-name { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 500; color: var(--color-gold); letter-spacing: 0.05em; margin: 1.4rem 0; }
+.reception-text { font-family: var(--font-sans); font-weight: 400; font-size: 0.95rem; color: var(--color-text); margin: 1rem 0 0.4rem; line-height: 1.7; }
+.reception-name { font-family: var(--font-serif); font-size: 2.6rem; font-weight: 600; color: var(--color-gold); letter-spacing: 0.05em; margin: 1.4rem 0; }
 .reception-addresses { margin-top: 1.5rem; padding-top: 1.2rem; position: relative; }
 .reception-addresses::before {
   content: '';
@@ -899,8 +899,8 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
   background: var(--color-gold);
   opacity: 0.4;
 }
-.reception-address-en { font-size: 0.95rem; color: var(--color-text-soft); margin-bottom: 0.5rem; }
-.reception-address-he { font-family: var(--font-hebrew); font-size: 1.05rem; color: var(--color-text-soft); }
+.reception-address-en { font-size: 0.95rem; color: var(--color-text-soft); margin-bottom: 0.5rem; font-weight: 600;}
+.reception-address-he { font-family: var(--font-hebrew); font-size: 1.05rem; color: var(--color-text-soft); font-weight: 600;}
 .reception-tribute { margin-top: 2rem; padding-top: 1.5rem; color: var(--color-gold); }
 .tribute-text { font-family: var(--font-serif); font-style: italic; font-size: 1rem; color: var(--color-text-soft); margin-top: 0.8rem; line-height: 1.7; }
 

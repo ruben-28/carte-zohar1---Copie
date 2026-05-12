@@ -55,10 +55,8 @@ const CONFIG = {
   loaderMinDuration: 1400
 };
 
-
-
 /* ============================================================
-   ARC DE TEXTE HÉBREU - Positionnement manuel pour compatibilité Safari
+   ARC DE TEXTE HÉBREU - Positionnement manuel compatible Safari
    ============================================================ */
 function initArcText() {
   const svg = document.getElementById('arcSvg');
@@ -72,7 +70,7 @@ function initArcText() {
   const radius = 220;   // rayon de l'arc
   const arcSpan = 120;  // angle total couvert par le texte (en degrés)
 
-  // Inverser l'ordre des caractères pour qu'ils s'affichent de droite à gauche
+  // Inverser l'ordre des caractères pour affichage de droite à gauche
   const chars = Array.from(text).reverse();
   const totalChars = chars.length;
 
@@ -107,7 +105,6 @@ function initArcText() {
 /* ============================================================
    TEXTES MODIFIABLES
    ============================================================ */
-
 function initEditableTexts() {
   const updates = {
     tefilinesTime: CONFIG.tefilinesTime,
@@ -138,7 +135,7 @@ function initHeroPhoto() {
   const captionEls = document.querySelectorAll('.hero-photo-caption');
   captionEls.forEach(el => el.textContent = CONFIG.heroPhotoCaption);
 
-  // Définir le mini-médaillon de chaque section
+  // Mini-médaillon (uniquement section Galerie)
   const thumbs = document.querySelectorAll('[data-thumb]');
   thumbs.forEach(t => {
     if (CONFIG.heroPhoto) {
@@ -179,7 +176,7 @@ function initLoader() {
 }
 
 /* ============================================================
-   OVERLAY + MORPHING POLAROÏD (Amélioration 5a)
+   OVERLAY + MORPHING POLAROÏD
    ============================================================ */
 function initOverlay() {
   const overlay = document.getElementById('overlay');
@@ -689,7 +686,7 @@ function observeReveals() {
 }
 
 /* ============================================================
-   MINI MÉDAILLON PHOTO EN HAUT DE SECTION
+   MINI MÉDAILLON PHOTO (Galerie uniquement)
    ============================================================ */
 function observeThumbs() {
   const thumbs = document.querySelectorAll('.section-thumb');
@@ -724,5 +721,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
   initRSVP();
   initParallax();
-  initArcText();   // ← ajouter cette ligne
+  initArcText();
 });

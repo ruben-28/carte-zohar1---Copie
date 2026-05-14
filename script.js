@@ -34,7 +34,7 @@ const CONFIG = {
 
   // ========== PHOTOS DU CAROUSEL ==========
   photos: [
-    { src: '', alt: 'Photo 1', label: 'Souvenir' },
+    { src: 'assets/images/palm_tree.jpg', alt: 'Photo 1', label: 'Souvenir' },
     { src: '', alt: 'Photo 2', label: 'Souvenir' },
     { src: '', alt: 'Photo 3', label: 'Souvenir' },
     { src: '', alt: 'Photo 4', label: 'Souvenir' },

@@ -183,7 +183,6 @@ function initOverlay() {
   const openBtn = document.getElementById('openInvitationBtn');
   const invitation = document.getElementById('invitation');
   const musicBtn = document.getElementById('musicToggleBtn');
-  const menuBtn = document.getElementById('menuToggleBtn');
   const heroPhoto = document.getElementById('heroPhoto');
   const polaroidWrapper = document.getElementById('polaroidWrapper');
 
@@ -244,9 +243,8 @@ function initOverlay() {
       heroPhoto.classList.add('settled');
       heroPhoto.removeAttribute('style');
 
-      // Afficher boutons flottants
+      // Afficher le bouton musique
       musicBtn.hidden = false;
-      menuBtn.hidden = false;
 
       // Cacher l'overlay totalement
       overlay.style.display = 'none';
@@ -449,84 +447,64 @@ function initCalendar() {
 }
 
 /* ============================================================
-   MENU
-   ============================================================ */
-function initMenu() {
-  const menuBtn = document.getElementById('menuToggleBtn');
-  const navMenu = document.getElementById('navMenu');
-  const closeBtn = document.getElementById('navCloseBtn');
-  const links = navMenu.querySelectorAll('.nav-link');
-
-  function openMenu() { navMenu.classList.add('open'); menuBtn.classList.add('open'); navMenu.setAttribute('aria-hidden', 'false'); }
-  function closeMenu() { navMenu.classList.remove('open'); menuBtn.classList.remove('open'); navMenu.setAttribute('aria-hidden', 'true'); }
-
-  menuBtn.addEventListener('click', () => {
-    if (navMenu.classList.contains('open')) closeMenu();
-    else openMenu();
-  });
-  closeBtn.addEventListener('click', closeMenu);
-  links.forEach((l) => l.addEventListener('click', closeMenu));
-}
-
-/* ============================================================
    CAROUSEL
    ============================================================ */
-function initCarousel() {
-  const track = document.getElementById('carouselTrack');
-  const dotsContainer = document.getElementById('carouselDots');
-  const prevBtn = document.getElementById('carouselPrev');
-  const nextBtn = document.getElementById('carouselNext');
+// function initCarousel() {
+//   const track = document.getElementById('carouselTrack');
+//   const dotsContainer = document.getElementById('carouselDots');
+//   const prevBtn = document.getElementById('carouselPrev');
+//   const nextBtn = document.getElementById('carouselNext');
 
-  let currentIndex = 0;
-  const total = CONFIG.photos.length;
+//   let currentIndex = 0;
+//   const total = CONFIG.photos.length;
 
-  CONFIG.photos.forEach((photo, idx) => {
-    const slide = document.createElement('div');
-    slide.className = 'carousel-slide';
-    if (photo.src) {
-      const img = document.createElement('img');
-      img.src = photo.src;
-      img.alt = photo.alt || `Photo ${idx + 1}`;
-      img.loading = 'lazy';
-      slide.appendChild(img);
-    } else {
-      const ph = document.createElement('div');
-      ph.className = 'carousel-placeholder';
-      ph.innerHTML = `<span>📸</span>${photo.label || 'Photo à venir'}`;
-      slide.appendChild(ph);
-    }
-    track.appendChild(slide);
+//   CONFIG.photos.forEach((photo, idx) => {
+//     const slide = document.createElement('div');
+//     slide.className = 'carousel-slide';
+//     if (photo.src) {
+//       const img = document.createElement('img');
+//       img.src = photo.src;
+//       img.alt = photo.alt || `Photo ${idx + 1}`;
+//       img.loading = 'lazy';
+//       slide.appendChild(img);
+//     } else {
+//       const ph = document.createElement('div');
+//       ph.className = 'carousel-placeholder';
+//       ph.innerHTML = `<span>📸</span>${photo.label || 'Photo à venir'}`;
+//       slide.appendChild(ph);
+//     }
+//     track.appendChild(slide);
 
-    const dot = document.createElement('button');
-    dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Aller à la photo ${idx + 1}`);
-    dot.addEventListener('click', () => goTo(idx));
-    dotsContainer.appendChild(dot);
-  });
+//     const dot = document.createElement('button');
+//     dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+//     dot.setAttribute('aria-label', `Aller à la photo ${idx + 1}`);
+//     dot.addEventListener('click', () => goTo(idx));
+//     dotsContainer.appendChild(dot);
+//   });
 
-  function update() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === currentIndex);
-    });
-  }
-  function goTo(idx) { currentIndex = (idx + total) % total; update(); }
-  function next() { goTo(currentIndex + 1); }
-  function prev() { goTo(currentIndex - 1); }
+//   function update() {
+//     track.style.transform = `translateX(-${currentIndex * 100}%)`;
+//     dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+//       d.classList.toggle('active', i === currentIndex);
+//     });
+//   }
+//   function goTo(idx) { currentIndex = (idx + total) % total; update(); }
+//   function next() { goTo(currentIndex + 1); }
+//   function prev() { goTo(currentIndex - 1); }
 
-  nextBtn.addEventListener('click', next);
-  prevBtn.addEventListener('click', prev);
+//   nextBtn.addEventListener('click', next);
+//   prevBtn.addEventListener('click', prev);
 
-  let startX = 0, endX = 0, isSwiping = false;
-  track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isSwiping = true; }, { passive: true });
-  track.addEventListener('touchmove', (e) => { if (!isSwiping) return; endX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', () => {
-    if (!isSwiping) return;
-    const diff = startX - endX;
-    if (Math.abs(diff) > 50) { if (diff > 0) next(); else prev(); }
-    isSwiping = false; startX = 0; endX = 0;
-  });
-}
+//   let startX = 0, endX = 0, isSwiping = false;
+//   track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isSwiping = true; }, { passive: true });
+//   track.addEventListener('touchmove', (e) => { if (!isSwiping) return; endX = e.touches[0].clientX; }, { passive: true });
+//   track.addEventListener('touchend', () => {
+//     if (!isSwiping) return;
+//     const diff = startX - endX;
+//     if (Math.abs(diff) > 50) { if (diff > 0) next(); else prev(); }
+//     isSwiping = false; startX = 0; endX = 0;
+//   });
+// }
 
 /* ============================================================
    RSVP
@@ -556,7 +534,6 @@ function initRSVP() {
     const data = {
       fullName: form.fullName.value.trim(),
       guestCount: form.guestCount.value,
-      tefilines: form.tefilines.value || '',
       reception: form.reception.value || '',
       message: form.message.value.trim()
     };
@@ -565,7 +542,6 @@ function initRSVP() {
     if (!data.fullName) { setError('fullName', 'Merci d\'indiquer votre nom complet'); hasError = true; }
     if (!data.guestCount || data.guestCount < 1) { setError('guestCount', 'Indiquez au moins 1 personne'); hasError = true; }
     if (data.guestCount > 20) { setError('guestCount', 'Maximum 20 personnes'); hasError = true; }
-    if (!data.tefilines) { setError('tefilines', 'Merci de préciser votre présence'); hasError = true; }
     if (!data.reception) { setError('reception', 'Merci de préciser votre présence'); hasError = true; }
 
     if (hasError) { feedback.textContent = 'Merci de compléter les champs requis'; return; }
@@ -717,8 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
   audioModule.init();
   initCountdown();
   initCalendar();
-  initMenu();
-  initCarousel();
+ // initCarousel();
   initRSVP();
   initParallax();
   initArcText();

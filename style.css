@@ -342,81 +342,11 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
 }
 .floating-btn:active { transform: scale(0.92); }
 .music-btn { bottom: 20px; right: 20px; }
-.menu-btn { top: 20px; right: 20px; flex-direction: column; gap: 4px; }
-
-.burger-line { width: 20px; height: 2px; background: currentColor; border-radius: 2px; transition: all var(--transition-fast); }
-.menu-btn.open .burger-line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.menu-btn.open .burger-line:nth-child(2) { opacity: 0; }
-.menu-btn.open .burger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
 .icon-music-muted { display: none; }
 .music-btn.muted .icon-music { display: none; }
 .music-btn.muted .icon-music-muted { display: block; }
 .music-btn:not(.muted) .icon-music { animation: musicPulse 1.8s ease-in-out infinite; }
 @keyframes musicPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-
-/* ============================================
-   MENU DE NAVIGATION
-   ============================================ */
-.nav-menu {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(160deg, var(--color-sea-deep) 0%, #1a4055 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 850;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-.nav-menu.open { opacity: 1; visibility: visible; }
-.nav-close {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  font-size: 2.2rem;
-  color: var(--color-sand-light);
-  font-weight: 200;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.nav-list { list-style: none; text-align: center; }
-.nav-list li { margin: 1.2rem 0; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
-.nav-menu.open .nav-list li { opacity: 1; transform: translateY(0); }
-.nav-menu.open .nav-list li:nth-child(1) { transition-delay: 0.1s; }
-.nav-menu.open .nav-list li:nth-child(2) { transition-delay: 0.18s; }
-.nav-menu.open .nav-list li:nth-child(3) { transition-delay: 0.26s; }
-.nav-menu.open .nav-list li:nth-child(4) { transition-delay: 0.34s; }
-.nav-menu.open .nav-list li:nth-child(5) { transition-delay: 0.42s; }
-.nav-menu.open .nav-list li:nth-child(6) { transition-delay: 0.5s; }
-
-.nav-link {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  color: var(--color-sand-light);
-  letter-spacing: 0.05em;
-  position: relative;
-  display: inline-block;
-  padding: 0.3rem 0.5rem;
-}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background: var(--color-gold-light);
-  transition: all var(--transition-fast);
-  transform: translateX(-50%);
-}
-.nav-link:hover::after, .nav-link:focus::after { width: 80%; }
-.nav-ornament { position: absolute; bottom: 40px; color: var(--color-gold-light); opacity: 0.6; }
 
 /* ============================================
    PARALLAX BACKGROUND
@@ -1008,7 +938,7 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
 /* ============================================
    SECTION 5 - CAROUSEL
    ============================================ */
-.carousel {
+/* .carousel {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1052,7 +982,7 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
 
 .carousel-dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; }
 .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); transition: all var(--transition-fast); cursor: pointer; }
-.carousel-dot.active { background: var(--color-white); width: 24px; border-radius: 4px; }
+.carousel-dot.active { background: var(--color-white); width: 24px; border-radius: 4px; } */
 
 /* ============================================
    SECTION 6 - RSVP

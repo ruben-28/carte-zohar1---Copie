@@ -84,32 +84,6 @@
     </svg>
   </button>
 
-  <button class="floating-btn menu-btn" id="menuToggleBtn" aria-label="Menu de navigation" hidden>
-    <span class="burger-line"></span>
-    <span class="burger-line"></span>
-    <span class="burger-line"></span>
-  </button>
-
-  <!-- MENU DE NAVIGATION -->
-  <nav class="nav-menu" id="navMenu" aria-hidden="true">
-    <button class="nav-close" id="navCloseBtn" aria-label="Fermer le menu">×</button>
-    <ul class="nav-list">
-      <li><a href="#section-intro" class="nav-link">Annonce</a></li>
-      <li><a href="#section-countdown" class="nav-link">Save the Date</a></li>
-      <li><a href="#section-tefilines" class="nav-link">Téfilines</a></li>
-      <li><a href="#section-reception" class="nav-link">Réception</a></li>
-      <li><a href="#section-photos" class="nav-link">Galerie</a></li>
-      <li><a href="#section-rsvp" class="nav-link">RSVP</a></li>
-    </ul>
-    <div class="nav-ornament">
-      <svg viewBox="0 0 100 20" width="100" height="20" aria-hidden="true">
-        <line x1="10" y1="10" x2="40" y2="10" stroke="currentColor" stroke-width="0.5" />
-        <circle cx="50" cy="10" r="2" fill="currentColor" />
-        <line x1="60" y1="10" x2="90" y2="10" stroke="currentColor" stroke-width="0.5" />
-      </svg>
-    </div>
-  </nav>
-
   <!-- ARRIÈRE-PLAN PARALLAX -->
   <!-- <div class="parallax-bg" id="parallaxBg" aria-hidden="true">
     <div class="parallax-layer parallax-sky"></div>
@@ -304,7 +278,7 @@
               <circle cx="50" cy="10" r="2" fill="currentColor"/>
               <line x1="60" y1="10" x2="90" y2="10" stroke="currentColor" stroke-width="0.5"/>
             </svg>
-            <p class="tribute-text">En ce jour de joie, une pensée toute particulière pour toi, Pépé Jojo.</p>
+            <p class="tribute-text">En ce jour de joie, une pensée toute particulière pour toi, <br>Pépé Jojo.</p>
           </div>
         </div>
 
@@ -319,7 +293,7 @@
     </section>
 
     <!-- SECTION 5 : CAROUSEL DE PHOTOS -->
-    <section class="section section-photos" id="section-photos">
+    <!-- <section class="section section-photos" id="section-photos">
       <div class="section-thumb" data-thumb></div>
       <div class="section-inner">
         <h2 class="section-title reveal">Galerie</h2>
@@ -337,40 +311,23 @@
           <div class="carousel-dots" id="carouselDots"></div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- SECTION 6 : RSVP -->
     <section class="section section-rsvp" id="section-rsvp">
       <div class="section-inner">
-        <h2 class="section-title reveal">RSVP</h2>
+        <h2 class="section-title reveal">Confirmez Votre Présence</h2>
 
         <form class="rsvp-form reveal" data-delay="200" id="rsvpForm" novalidate>
 
           <div class="form-group">
-            <label for="fullName">Nom complet</label>
+            <label for="fullName">Nom & Prénom</label>
             <input type="text" id="fullName" name="fullName" required autocomplete="name" />
             <span class="form-error" data-error-for="fullName"></span>
           </div>
 
           <div class="form-group">
-            <label for="guestCount">Nombre de personnes</label>
-            <input type="number" id="guestCount" name="guestCount" min="1" max="20" required inputmode="numeric" />
-            <span class="form-error" data-error-for="guestCount"></span>
-          </div>
-
-          <div class="form-group">
-            <span class="form-label">Présence à la mise des téfilines</span>
-            <div class="form-toggle">
-              <input type="radio" id="tefYes" name="tefilines" value="oui" />
-              <label for="tefYes">Oui</label>
-              <input type="radio" id="tefNo" name="tefilines" value="non" />
-              <label for="tefNo">Non</label>
-            </div>
-            <span class="form-error" data-error-for="tefilines"></span>
-          </div>
-
-          <div class="form-group">
-            <span class="form-label">Présence à la réception</span>
+            <span class="form-label">Assisterons à la BM</span>
             <div class="form-toggle">
               <input type="radio" id="recYes" name="reception" value="oui" />
               <label for="recYes">Oui</label>
@@ -378,6 +335,12 @@
               <label for="recNo">Non</label>
             </div>
             <span class="form-error" data-error-for="reception"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="guestCount">Nombre de personnes</label>
+            <input type="number" id="guestCount" name="guestCount" min="1" max="20" required inputmode="numeric" />
+            <span class="form-error" data-error-for="guestCount"></span>
           </div>
 
           <div class="form-group">
@@ -407,7 +370,7 @@
    <div class="footer-contact">
   <span>for more infos</span>
   <i class="fa fa-whatsapp"></i>
-  <a href="https://wa.me/XXXXXXXXXXX" target="_blank">
+  <a href="https://wa.me/33767604801" target="_blank">
     contact me
   </a>
 </div>

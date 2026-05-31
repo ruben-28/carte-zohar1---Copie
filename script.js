@@ -8,7 +8,7 @@ const CONFIG = {
 
   // ========== HORAIRES ==========
   tefilinesTime: 'à 09H00',
-  receptionTime: 'à partir de 09H00',
+  receptionTime: 'juste après l\'office',
 
   // ========== LIEUX ==========
   tefilinesPlace: 'dans la salle MAKOM BAYAM',
@@ -50,7 +50,7 @@ const CONFIG = {
   audioTargetVolume: 0.4,
 
   // ========== RSVP ==========
-  rsvpEndpoint: '',
+  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbzo_mvGcoAUuwFMgPtb2Yy0SalJnddPEv9-JS6UEEW_ByuW4ECIfaY7GiSBLXK5exB9/exec',
 
   loaderMinDuration: 1400
 };
@@ -548,26 +548,35 @@ function initRSVP() {
 
     feedback.textContent = 'Envoi en cours…';
 
-    try {
-      if (CONFIG.rsvpEndpoint) {
-        const res = await fetch(CONFIG.rsvpEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (!res.ok) throw new Error('Erreur réseau');
-      } else {
-        console.log('RSVP reçu (à connecter à un backend):', data);
-        await new Promise((r) => setTimeout(r, 600));
-      }
-      feedback.textContent = `Merci ${data.fullName.split(' ')[0]} ! Votre réponse a bien été enregistrée.`;
-      feedback.classList.add('success');
-      form.reset();
-      launchConfetti();
-    } catch (err) {
-      feedback.textContent = 'Une erreur est survenue. Merci de réessayer.';
-      console.error(err);
+ try {
+  if (CONFIG.rsvpEndpoint) {
+    const formData = new URLSearchParams();
+    formData.append('fullName', data.fullName);
+    formData.append('guestCount', data.guestCount);
+    formData.append('reception', data.reception);
+    formData.append('message', data.message);
+
+    const response = await fetch(CONFIG.rsvpEndpoint, {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(result.error || 'Erreur inconnue');
     }
+  }
+
+  feedback.textContent = `Merci ${data.fullName.split(' ')[0]} ! Votre réponse a bien été enregistrée.`;
+  feedback.classList.add('success');
+  form.reset();
+  launchConfetti();
+
+} catch (err) {
+  feedback.textContent = 'Votre réponse n’a pas été envoyée. Merci de réessayer.';
+  console.error(err);
+}
   });
 }
 

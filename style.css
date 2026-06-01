@@ -518,8 +518,15 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
 
 /* Sur les très petits écrans, réduire encore la largeur de l'image */
 @media (max-width: 400px) {
-  .section-countdown::before { width: 32%; }
-  .section-countdown::after { left: 26%; width: 10%; }
+  .section-countdown::before {
+    width: 46%;
+    background-position: center center, center center;
+  }
+
+  .section-countdown::after {
+    left: 34%;
+    width: 12%;
+  }
 }
 
 /* Sur grand écran, l'image peut être un peu plus large */
@@ -1067,6 +1074,13 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
 .form-feedback { margin-top: 1rem; text-align: center; font-size: 0.95rem; color: var(--color-sea-deep); font-style: italic; min-height: 1.5em; }
 .form-feedback.success { color: #2D7A4F; font-weight: 500; }
 
+.form-group.disabled {
+  opacity: 0.45;
+}
+
+.form-group.disabled input {
+  cursor: not-allowed;
+}
 /* ============================================
    FOOTER
    ============================================ */
@@ -1210,5 +1224,108 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
   .footer-line {
     font-size: 0.8rem;
     gap: 0.5rem;
+  }
+}
+
+
+
+/* ============================================
+   FIX VERY SMALL SCREENS - Galaxy Fold / 344px
+   ============================================ */
+@media (max-width: 360px) {
+
+  /* Empêche les éléments de dépasser horizontalement */
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-inner {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Boutons itinéraire / Waze / calendrier */
+  .btn {
+    max-width: 100%;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  .btn-waze,
+  .calendar-option {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .calendar-option {
+    padding: 0.8rem 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Save the Date : recentrer le background */
+  .section-countdown::before {
+    width: 46%;
+    background-position: center center, center center;
+    transform-origin: center;
+  }
+
+  .section-countdown::after {
+    left: 34%;
+    width: 12%;
+  }
+
+  /* Countdown : garder 4 cases mais plus compactes et centrées */
+  .countdown {
+    width: 100%;
+    max-width: 312px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .countdown-item {
+    min-width: 0;
+    padding: 0.75rem 0.2rem;
+    border-radius: 12px;
+  }
+
+  .countdown-value {
+    font-size: 1.65rem;
+  }
+
+  .countdown-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* Titre RSVP : reste sur une ligne sur Fold */
+  .section-rsvp .section-title {
+    white-space: nowrap;
+    font-size: clamp(1.35rem, 6vw, 1.75rem);
+    letter-spacing: 0.02em;
+  }
+
+  /* Labels du formulaire un peu moins espacés */
+  .form-group label,
+  .form-label {
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
   }
 }

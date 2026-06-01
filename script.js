@@ -50,7 +50,7 @@ const CONFIG = {
   audioTargetVolume: 0.4,
 
   // ========== RSVP ==========
-  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbzo_mvGcoAUuwFMgPtb2Yy0SalJnddPEv9-JS6UEEW_ByuW4ECIfaY7GiSBLXK5exB9/exec',
+  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbycSuEDtuUj0-qV5R7NDSyxIsZVFfOjI4Ib3-S-5zhqTkWBG13kd7RpiQL4yBHUsfkb/exec',
 
   loaderMinDuration: 1400
 };
@@ -513,13 +513,20 @@ function initRSVP() {
   const form = document.getElementById('rsvpForm');
   const feedback = document.getElementById('formFeedback');
 
+  const guestCountInput = form.querySelector('#guestCount');
+  const receptionRadios = form.querySelectorAll('input[name="reception"]');
+
   function setError(name, message) {
     const errEl = form.querySelector(`[data-error-for="${name}"]`);
     if (errEl) errEl.textContent = message;
-    const group = form.querySelector(`#${name}`)?.closest('.form-group') ||
-                  form.querySelector(`[name="${name}"]`)?.closest('.form-group');
+
+    const group =
+      form.querySelector(`#${name}`)?.closest('.form-group') ||
+      form.querySelector(`[name="${name}"]`)?.closest('.form-group');
+
     if (group) group.classList.toggle('error', !!message);
   }
+
   function clearErrors() {
     form.querySelectorAll('.form-error').forEach((e) => (e.textContent = ''));
     form.querySelectorAll('.form-group').forEach((g) => g.classList.remove('error'));
@@ -527,9 +534,32 @@ function initRSVP() {
     feedback.classList.remove('success');
   }
 
+  function updateGuestCountState() {
+    const receptionValue = form.reception.value;
+
+    if (receptionValue === 'non') {
+      guestCountInput.value = '';
+      guestCountInput.required = false;
+      guestCountInput.disabled = true;
+      guestCountInput.closest('.form-group').classList.add('disabled');
+      setError('guestCount', '');
+    } else {
+      guestCountInput.disabled = false;
+      guestCountInput.required = true;
+      guestCountInput.closest('.form-group').classList.remove('disabled');
+    }
+  }
+
+  receptionRadios.forEach((radio) => {
+    radio.addEventListener('change', updateGuestCountState);
+  });
+
+  updateGuestCountState();
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     clearErrors();
+    updateGuestCountState();
 
     const data = {
       fullName: form.fullName.value.trim(),
@@ -539,44 +569,64 @@ function initRSVP() {
     };
 
     let hasError = false;
-    if (!data.fullName) { setError('fullName', 'Merci d\'indiquer votre nom complet'); hasError = true; }
-    if (!data.guestCount || data.guestCount < 1) { setError('guestCount', 'Indiquez au moins 1 personne'); hasError = true; }
-    if (data.guestCount > 20) { setError('guestCount', 'Maximum 20 personnes'); hasError = true; }
-    if (!data.reception) { setError('reception', 'Merci de préciser votre présence'); hasError = true; }
 
-    if (hasError) { feedback.textContent = 'Merci de compléter les champs requis'; return; }
+    if (!data.fullName) {
+      setError('fullName', 'Merci d’indiquer votre nom complet');
+      hasError = true;
+    }
+
+    if (!data.reception) {
+      setError('reception', 'Merci de préciser votre présence');
+      hasError = true;
+    }
+
+    if (data.reception === 'oui') {
+      if (!data.guestCount || Number(data.guestCount) < 1) {
+        setError('guestCount', 'Indiquez au moins 1 personne');
+        hasError = true;
+      }
+
+      if (Number(data.guestCount) > 20) {
+        setError('guestCount', 'Maximum 20 personnes');
+        hasError = true;
+      }
+    }
+
+    if (hasError) {
+      feedback.textContent = 'Merci de compléter les champs requis';
+      return;
+    }
 
     feedback.textContent = 'Envoi en cours…';
 
- try {
-  if (CONFIG.rsvpEndpoint) {
-    const formData = new URLSearchParams();
-    formData.append('fullName', data.fullName);
-    formData.append('guestCount', data.guestCount);
-    formData.append('reception', data.reception);
-    formData.append('message', data.message);
+    try {
+      if (CONFIG.rsvpEndpoint) {
+        const formData = new URLSearchParams();
+        formData.append('fullName', data.fullName);
+        formData.append('guestCount', data.guestCount);
+        formData.append('reception', data.reception);
+        formData.append('message', data.message);
 
-    const response = await fetch(CONFIG.rsvpEndpoint, {
-      method: 'POST',
-      body: formData
-    });
+        await fetch(CONFIG.rsvpEndpoint, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+      } else {
+        console.log('RSVP reçu (mode démo) :', data);
+        await new Promise((r) => setTimeout(r, 600));
+      }
 
-    const result = await response.json();
+      feedback.textContent = `Merci ${data.fullName.split(' ')[0]} ! Votre réponse a bien été enregistrée.`;
+      feedback.classList.add('success');
+      form.reset();
+      updateGuestCountState();
+      launchConfetti();
 
-    if (!result.success) {
-      throw new Error(result.error || 'Erreur inconnue');
+    } catch (err) {
+      feedback.textContent = 'Votre réponse n’a pas été envoyée. Merci de réessayer.';
+      console.error(err);
     }
-  }
-
-  feedback.textContent = `Merci ${data.fullName.split(' ')[0]} ! Votre réponse a bien été enregistrée.`;
-  feedback.classList.add('success');
-  form.reset();
-  launchConfetti();
-
-} catch (err) {
-  feedback.textContent = 'Votre réponse n’a pas été envoyée. Merci de réessayer.';
-  console.error(err);
-}
   });
 }
 

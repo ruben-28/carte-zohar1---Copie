@@ -50,7 +50,7 @@ const CONFIG = {
   audioTargetVolume: 0.4,
 
   // ========== RSVP ==========
-  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbycSuEDtuUj0-qV5R7NDSyxIsZVFfOjI4Ib3-S-5zhqTkWBG13kd7RpiQL4yBHUsfkb/exec',
+  rsvpEndpoint: 'https://script.google.com/macros/s/AKfycbzimG3Hyet1BJaCcnkaaCIk-5wbcmt_dpsjJqktEuUkxmZtkP1UROizfidNet2Ktqhs/exec',
 
   loaderMinDuration: 1400
 };
